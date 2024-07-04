@@ -1,4 +1,4 @@
-/<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +15,10 @@
     <header>
         <div class="header-container">
             <img src="media/Logo-couleur-PNG.png" alt="Logo de Cowork Factory">
+            <nav class="header-nav">
+                <button onclick="window.history.back();" aria-label="Retour">Retour</button>
+                <button onclick="window.close();" aria-label="Quitter">Quitter</button>
+            </nav>
         </div>
     </header>
     <main>
@@ -22,14 +26,11 @@
             <h1>Bienvenue chez Cowork Factory</h1>
             <p>Espaces de travail modernes avec tarifs flexibles pour startups et PME.</p>
         </section>
-        <section class="carousel">
+        <section class="carousel" aria-label="Galerie d'images">
             <div class="carousel-container">
                 <img src="media/istockphoto-1555306693-612x612.jpg" alt="Espaces de travail modernes">
                 <img src="media/moodboard 2.jpg" alt="Espaces de travail collaboratif">
-                
                 <img src="media/pexels-alexander-suhorucov-6457492.jpg" alt="Réunion d'équipe">
-               
-         
                 <img src="media/pexels-shkrabaanthony-5862376.jpg" alt="Espace de travail">
                 <img src="media/pexels-yankrukov-7793247.jpg" alt="Discussion entre collègues">
             </div>
@@ -47,7 +48,35 @@
     </main>
     <footer>
         <div class="footer-container">
+            <p>&copy; 2024 Cowork Factory. Tous droits réservés.</p>
+            <nav aria-label="Footer navigation">
+                <ul>
+                    <li><a href="#terms">Termes et conditions</a></li>
+                    <li><a href="#privacy">Politique de confidentialité</a></li>
+                </ul>
+            </nav>
         </div>
     </footer>
+    <script>
+        // Fonction pour faire défiler les images
+        const carouselContainer = document.querySelector('.carousel-container');
+        let scrollAmount = 0;
+
+        function autoScroll() {
+            const maxScroll = carouselContainer.scrollWidth - carouselContainer.clientWidth;
+            if (scrollAmount >= maxScroll) {
+                scrollAmount = 0;
+            } else {
+                scrollAmount += carouselContainer.clientWidth;
+            }
+            carouselContainer.scroll({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Défilement automatique toutes les 3 secondes
+        setInterval(autoScroll, 3000);
+    </script>
 </body>
 </html>
